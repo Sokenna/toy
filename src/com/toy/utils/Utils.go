@@ -1,9 +1,37 @@
 package utils
 
 import (
+	"errors"
+	"fmt"
 	"sync/atomic"
 	"time"
 )
+
+type Cache interface {
+	Put(string, interface{}) error
+	Get(string2 string) (interface{}, error)
+}
+type GoCache struct {
+	m map[string]interface{}
+}
+
+func (this *GoCache) New() *GoCache {
+	if this == nil {
+		this = &GoCache{m: make(map[string]interface{}, 10)}
+	}
+	return this
+}
+
+func (this *GoCache) Put(key string, val interface{}) error {
+	this.m[key] = val
+	return nil
+}
+func (this *GoCache) Get(key string) (interface{}, error) {
+	if v, ok := this.m[key]; ok {
+		return v, nil
+	}
+	return nil, errors.New(fmt.Sprintf("the key %s not exist.", key))
+}
 
 type UUID [16]byte
 

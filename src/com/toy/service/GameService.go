@@ -2,8 +2,8 @@ package service
 
 import (
 	"fmt"
+	"github.com/Sokenna/toy/src/com/toy/logger"
 	"time"
-	"toy/src/logger"
 )
 
 type GameService struct {

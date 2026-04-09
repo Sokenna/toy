@@ -66,15 +66,3 @@ func (l *LoggerTool) Log(data interface{}) {
 func NewLogger() *LoggerTool {
 	return &LoggerTool{}
 }
-func CreateLoggerTool() *LoggerTool {
-	l := NewLogger()
-	cw := newConsoleWriter()
-	l.RegisterWriter(cw)
-	fw := newFileWriter()
-	os.ReadFile("")
-	if err := fw.SetFile("学习地址路径大全.log"); err != nil {
-		fmt.Println(err)
-	}
-	l.RegisterWriter(fw)
-	return l
-}
