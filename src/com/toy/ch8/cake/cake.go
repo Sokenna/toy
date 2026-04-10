@@ -61,8 +61,9 @@ func (s *Shop) Work(runs int) {
 		iced := make(chan cake, s.IceBuf)
 		go s.baker(baked)
 		for i := 0; i < s.NumIcers; i++ {
-			s.icer(iced, baked)
+			go s.icer(iced, baked)
 		}
+		s.inscriber(iced)
 	}
 }
 
