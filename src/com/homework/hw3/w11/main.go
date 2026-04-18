@@ -3,9 +3,13 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"strconv"
 )
 
 func main() {
+	fmt.Scanf("123")
+	fmt.Println(strconv.FormatInt(123, 16))
+
 	fmt.Println(comma("123"))              // 123
 	fmt.Println(comma("12345"))            // 12,345
 	fmt.Println(comma("1234567"))          // 1,234,567
